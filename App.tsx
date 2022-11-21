@@ -1,10 +1,10 @@
 import { NativeBaseProvider, Text } from "native-base";
-import { Home } from "./src/screens/Home";
+import { Details } from "./src/screens/Details";
 
 export default function App() {
   return (
     <NativeBaseProvider>
-      <Home />
+      <Details />
     </NativeBaseProvider>
   );
 }

@@ -1,38 +1,47 @@
-import { HStack, Icon, IconButton, Text } from "native-base";
-import { Ionicons } from '@expo/vector-icons'
+import { HStack, Icon, Menu, Pressable, Text } from "native-base";
+import { AntDesign, Ionicons } from '@expo/vector-icons'
 
-export function Header() {
+interface HeaderProps {
+  title: string
+}
+
+export function Header({ title }: HeaderProps) {
   return (
     <HStack 
-        mt={12} 
-        justifyContent="space-between"
-        alignItems="center"
-        px={4}
-      >
-        <HStack>
-          <Text
-            fontWeight="bold"
-            fontSize="3xl"
-          >
-            Food
-          </Text>
-          <Text
-            fontWeight="bold"
-            fontSize="3xl"
-            color="green.500"
-          >
-            bank.
-          </Text>
-        </HStack>
+      justifyContent="space-between" 
+      mt={7}
+      alignItems="center"
+      px={6}
+    >
+      <Icon 
+        as={AntDesign}
+        name="arrowleft"
+        size="lg"
+      />
 
-        <IconButton 
-          icon={<Icon as={Ionicons} name="notifications-outline" />}
-          rounded="full"
-          _icon={{
-            size: "xl",
-            color: "black"
-          }}
-        />
-      </HStack>
+      <Text 
+        fontSize={21}
+        fontWeight="bold"
+      >
+        {title}
+      </Text>
+
+      <Menu
+        placement="left top"
+        trigger={triggerProps => (
+          <Pressable {...triggerProps}>
+            <Icon 
+              as={Ionicons}
+              name="ellipsis-vertical"
+              size="md"
+            />
+          </Pressable>
+        )}
+      >
+        <Menu.Item>Denunciar</Menu.Item>
+        <Menu.Item>Entrar em contato</Menu.Item>
+        <Menu.Item>Website</Menu.Item>
+      </Menu>
+    </HStack>
   )
 }

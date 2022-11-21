@@ -4,25 +4,22 @@ import { Alert, Dimensions } from "react-native";
 import { Card } from "../components/Card";
 import { CategoryCard } from "../components/CategoryCard";
 
-import { Header } from "../components/Header";
+import { HomeHeader } from "../components/HomeHeader";
 import { Input } from "../components/Input";
 import { SmallCard } from "../components/SmallCard";
 
 export function Home() {
-  const data = [1, 2, 3, 5, 6, 7, 8]
-  const category = ['Medicina', 'Food', 'Educação', 'Copa']
-
   const [selectedCategory, setSelectedCategory] = useState('medicina')
 
   return (
     <VStack flex={1}>
-      <Header />
+      <HomeHeader />
 
       <ScrollView mx={4} mt={5} showsVerticalScrollIndicator={false}>
         <Input placeholder="Procurar categoria" />
 
         <FlatList 
-          data={data}
+          data={[1, 2, 3, 4 ,5,6,7,8]}
           keyExtractor={item => item.toString()}
           renderItem={() => (
             <Card />
@@ -42,7 +39,7 @@ export function Home() {
         </Text>
 
         <FlatList 
-          data={category}
+          data={['Medicina', 'Food', 'Educação', 'Copa']}
           keyExtractor={item => item}
           renderItem={({ item }) => (
             <CategoryCard 
@@ -57,7 +54,7 @@ export function Home() {
         />
 
         <FlatList 
-          data={data}
+          data={[1, 2, 3, 4 ,5,6,7,8]}
           keyExtractor={item => item.toString()}
           renderItem={() => (
             <SmallCard onPress={() => Alert.alert('doar')} />
