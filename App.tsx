@@ -1,10 +1,10 @@
-import { NativeBaseProvider, Text } from "native-base";
-import { Details } from "./src/screens/Details";
+import { NativeBaseProvider } from "native-base";
+import { Donate } from "./src/screens/Donate";
 
 export default function App() {
   return (
     <NativeBaseProvider>
-      <Details />
+      <Donate />
     </NativeBaseProvider>
   );
 }
