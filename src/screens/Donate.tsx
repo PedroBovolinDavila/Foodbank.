@@ -1,5 +1,6 @@
 import { HStack, Radio, ScrollView, Text, VStack } from "native-base";
 import { useState } from "react";
+import { Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button } from "../components/Button";
 import { Header } from "../components/Header";
@@ -12,10 +13,10 @@ export function Donate() {
   const [paymentMethod, setPaymentMethod] = useState('Pix')  
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#ffff' }}>
       <Header title="Doar" />
 
-      <ScrollView showsVerticalScrollIndicator={false} mx={7}>
+      <ScrollView showsVerticalScrollIndicator={false} mx={7} bg="white">
         <VStack mt={6}>
           <SmallCard titleOnly />
 
@@ -39,13 +40,13 @@ export function Donate() {
           </Text>
 
           <VStack mt={4}>
-            <Radio.Group name="paymentRadio" onChange={nextValue => setPaymentMethod(nextValue)}>
+            <Radio.Group defaultValue="Pix" name="paymentRadio" onChange={nextValue => setPaymentMethod(nextValue)}>
               <PaymentMethodRadio value="Pix" isSelected={paymentMethod === 'Pix'} />
               <PaymentMethodRadio value="Boleto" isSelected={paymentMethod === 'Boleto'} />
             </Radio.Group>
           </VStack>
 
-          <Button title="Pagar e confirmar" mt={8} />
+          <Button title="Pagar e confirmar" mt={8} onPress={() => Alert.alert('Doação enviada', `Você doou R$ ${selectedAmount} para uma causa nobre!`)} />
         </VStack> 
       </ScrollView>
     </SafeAreaView>

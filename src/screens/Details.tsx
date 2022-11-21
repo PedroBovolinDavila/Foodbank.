@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { Avatar, Heading, HStack, Image, ScrollView, Text, VStack } from "native-base";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button } from "../components/Button";
@@ -6,11 +7,17 @@ import { Organizer } from "../components/Organizer";
 import { ProgressCard } from "../components/ProgressCard";
 
 export function Details() {
+  const navigation = useNavigation()
+
+  function handleGoToDonateScreen() {
+    navigation.navigate('donate')
+  }
+
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#ffff' }}>
       <Header title="Detalhes" />
       
-      <ScrollView showsVerticalScrollIndicator={false} px={6}>
+      <ScrollView showsVerticalScrollIndicator={false} px={6} bg="white">
         <VStack >
           <Image 
             source={require('../assets/card.jpg')}
@@ -44,7 +51,7 @@ export function Details() {
 
           <Organizer />
 
-          <Button title="Doar agora" mb={5} />
+          <Button title="Doar agora" mb={5} onPress={handleGoToDonateScreen} />
         </VStack>
       </ScrollView>
     </SafeAreaView>

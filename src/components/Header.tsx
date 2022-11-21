@@ -1,23 +1,35 @@
 import { HStack, Icon, Menu, Pressable, Text } from "native-base";
 import { AntDesign, Ionicons } from '@expo/vector-icons'
+import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 interface HeaderProps {
   title: string
 }
 
 export function Header({ title }: HeaderProps) {
+  const navigation = useNavigation()
+
+  function handleGoBack() {
+    navigation.goBack()
+  }
+
   return (
     <HStack 
       justifyContent="space-between" 
       mt={7}
       alignItems="center"
       px={6}
+      bg="white"
     >
-      <Icon 
-        as={AntDesign}
-        name="arrowleft"
-        size="lg"
-      />
+      <TouchableOpacity onPress={handleGoBack}>
+        <Icon 
+          as={AntDesign}
+          name="arrowleft"
+          size="lg"
+        />
+      </TouchableOpacity>
+
 
       <Text 
         fontSize={21}

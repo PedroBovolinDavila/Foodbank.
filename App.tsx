@@ -1,10 +1,10 @@
 import { NativeBaseProvider } from "native-base";
-import { Donate } from "./src/screens/Donate";
+import { Routes } from "./src/routes";
 
 export default function App() {
   return (
     <NativeBaseProvider>
-      <Donate />
+      <Routes />
     </NativeBaseProvider>
   );
 }

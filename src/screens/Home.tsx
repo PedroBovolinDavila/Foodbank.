@@ -1,6 +1,7 @@
+import { useNavigation } from "@react-navigation/native";
 import { FlatList, ScrollView, Text, VStack } from "native-base";
 import { useState } from "react";
-import { Alert, Dimensions } from "react-native";
+import { Alert, Dimensions, findNodeHandle } from "react-native";
 import { Card } from "../components/Card";
 import { CategoryCard } from "../components/CategoryCard";
 
@@ -11,18 +12,24 @@ import { SmallCard } from "../components/SmallCard";
 export function Home() {
   const [selectedCategory, setSelectedCategory] = useState('medicina')
 
+  const navigation = useNavigation()
+
+  function handleGoToDetailsScreen() {
+    navigation.navigate('details')
+  }
+
   return (
-    <VStack flex={1}>
+    <VStack flex={1} bg="white">
       <HomeHeader />
 
-      <ScrollView mx={4} mt={5} showsVerticalScrollIndicator={false}>
+      <ScrollView mx={4} mt={7} showsVerticalScrollIndicator={false}>
         <Input placeholder="Procurar categoria" />
 
         <FlatList 
           data={[1, 2, 3, 4 ,5,6,7,8]}
           keyExtractor={item => item.toString()}
           renderItem={() => (
-            <Card />
+            <Card onPress={handleGoToDetailsScreen} />
           )}
 
           my={7}
@@ -57,7 +64,7 @@ export function Home() {
           data={[1, 2, 3, 4 ,5,6,7,8]}
           keyExtractor={item => item.toString()}
           renderItem={() => (
-            <SmallCard onPress={() => Alert.alert('doar')} />
+            <SmallCard onPress={handleGoToDetailsScreen} />
           )}
 
           mt={31}

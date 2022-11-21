@@ -1,13 +1,15 @@
-import { HStack, Icon, Image, Pressable, Progress, Skeleton, Text, useTheme, VStack } from "native-base";
+import { HStack, Icon, Image, IPressableProps, Pressable, Progress, Skeleton, Text, useTheme, VStack } from "native-base";
 
 import { EvilIcons } from '@expo/vector-icons';
 import { Alert, Dimensions } from "react-native";
 
-export function Card() {
+interface CardProps extends IPressableProps {}
+
+export function Card({ onPress, ...rest }: CardProps) {
   const { sizes } = useTheme()
 
   return (
-    <Pressable onPress={() => Alert.alert('doacao')}>
+    <Pressable onPress={onPress} {...rest}>
       <VStack 
         borderWidth={1}
         borderColor="green.100"
